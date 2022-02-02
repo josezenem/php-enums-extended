@@ -16,10 +16,23 @@ composer require josezenem/php-enums-extended
 
 ## Usage
 
+* **->equals(...$params)** Pass one or multiple parameters, will return true if one matches.
+* **->doesNotEqual(...$params)** Inverse of ->equals()
+
+
 * **::toOptionsArray()** Will return an array of a $key => $val pair.
 * **::toOptionsInverseArray()** Will return an array of a $val => $key pair.
 
 ```php
+
+// Blog.php
+class Blog
+{
+    public function __construct(
+        public StatusEnum $status = StatusEnum::Open,
+    ) {
+    }
+}
 
 // StatusEnum.php
 use Josezenem\PhpEnumsExtended\Traits\PhpEnumsExtendedTrait;
@@ -36,6 +49,13 @@ enum StatusEnum:int
 
 
 // Usage
+$blog = new Blog();
+
+
+// ->equals()
+$blog->status->equals(StatusEnum::Open); // will return true
+$blog->status->equals(StatusEnum::Closed, StatusEnum::Open); // Pass any number of params, will return true if it matches any
+
 
 
 // ::toOptionsArray()

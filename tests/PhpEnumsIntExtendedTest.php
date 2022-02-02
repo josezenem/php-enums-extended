@@ -24,5 +24,12 @@ it('converts to options array inverse', function () {
 
 it('equals one of the parameters', function () {
     $blog = new Blog();
-    expect(StatusIntEnumTest::equals($blog->intStatus))->toBeTrue();
+
+    expect($blog->intStatus->equals(StatusIntEnumTest::Open))->toBeTrue();
+});
+
+it('does not equal one of the parameters', function () {
+    $blog = new Blog();
+
+    expect($blog->intStatus->doesNotEqual(StatusIntEnumTest::Closed, StatusIntEnumTest::Draft))->toBeTrue();
 });

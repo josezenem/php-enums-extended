@@ -4,25 +4,22 @@ namespace Josezenem\PhpEnumsExtended\Traits;
 
 trait PhpEnumsExtendedTrait
 {
-    public static function equals(...$params): bool
+    public function equals(...$params): bool
     {
-        $cases = self::cases();
         foreach ($params as $param) {
-            foreach ($cases as $case) {
-                $case_value = $case->value ?? $case->name;
-                $param_value = $param->value ?? $param->name;
-                if ($case_value === $param_value) {
-                    return true;
-                }
+            $self_value = $this->value ?? $this->name;
+            $param_value = $param->value ?? $param->name;
+            if ($self_value === $param_value) {
+                return true;
             }
         }
 
         return false;
     }
 
-    public static function doesNotEqual(...$params): bool
+    public function doesNotEqual(...$params): bool
     {
-        return ! self::equals($params);
+        return ! $this->equals(...$params);
     }
 
     public static function toOptionsArray(): array
