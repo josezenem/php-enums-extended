@@ -32,4 +32,3 @@ it('does not equal one of the parameters', function () {
 
     expect($blog->status->doesNotEqual(StatusEnumTest::Closed, StatusEnumTest::Draft))->toBeTrue();
 });
-
