@@ -21,7 +21,7 @@ it('converts to options array inverse', function () {
     ]);
 });
 
-it('has blog as open', function () {
+it('equals one of the parameters', function () {
     $blog = new Blog();
-    expect($blog->stringStatus)->toEqual(StatusStringEnumTest::Open);
+    expect(StatusStringEnumTest::equals($blog->stringStatus))->toBeTrue();
 });

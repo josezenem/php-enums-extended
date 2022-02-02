@@ -22,7 +22,7 @@ it('converts to options array inverse', function () {
     ]);
 });
 
-it('has blog as open', function () {
+it('equals one of the parameters', function () {
     $blog = new Blog();
-    expect($blog->intStatus)->toEqual(StatusIntEnumTest::Open);
+    expect(StatusIntEnumTest::equals($blog->intStatus))->toBeTrue();
 });
