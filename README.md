@@ -1,8 +1,9 @@
 # PHP 8.1 Enums Extended
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/josezenem/php-enums-extended.svg?style=flat-square)](https://packagist.org/packages/josezenem/php-enums-extended)
+[![Latest Stable Version](http://poser.pugx.org/josezenem/php-enums-extended/v)](https://packagist.org/packages/josezenem/php-enums-extended)
 [![Tests](https://github.com/josezenem/php-enums-extended/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/josezenem/php-enums-extended/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/josezenem/php-enums-extended.svg?style=flat-square)](https://packagist.org/packages/josezenem/php-enums-extended)
+[![PHP Version Require](http://poser.pugx.org/josezenem/php-enums-extended/require/php)](https://packagist.org/packages/josezenem/php-enums-extended)
 
 PHP 8.1 Enums Extended, gives you the ability to use additional methods to work with PHP 8.1 Enums.
 
@@ -53,8 +54,12 @@ $blog = new Blog();
 
 
 // ->equals()
-$blog->status->equals(StatusEnum::Open); // will return true
-$blog->status->equals(StatusEnum::Closed, StatusEnum::Open); // Pass any number of params, will return true if it matches any
+$blog->status->equals(StatusEnum::Open); // will return true if it matches
+$blog->status->equals(StatusEnum::Closed, StatusEnum::Open); // Pass any number of params, will return true if it matches any of the parameters
+
+// ->doesNotEqual()
+$blog->status->doesNotEqual(StatusEnum::Closed); // will return true if it does not match
+$blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft)  // Pass any number of params, will return true if it does not match any of the parameters
 
 
 
