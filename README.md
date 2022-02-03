@@ -27,6 +27,7 @@ composer require josezenem/php-enums-extended
 ```php
 
 // StatusEnum.php
+// StatusEnum:int is used for the example, but supports :string and default of just StatusEnum
 use Josezenem\PhpEnumsExtended\Traits\PhpEnumsExtendedTrait;
 
 enum StatusEnum:int
