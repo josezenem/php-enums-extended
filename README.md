@@ -26,15 +26,6 @@ composer require josezenem/php-enums-extended
 
 ```php
 
-// Blog.php
-class Blog
-{
-    public function __construct(
-        public StatusEnum $status = StatusEnum::Open,
-    ) {
-    }
-}
-
 // StatusEnum.php
 use Josezenem\PhpEnumsExtended\Traits\PhpEnumsExtendedTrait;
 
@@ -45,6 +36,15 @@ enum StatusEnum:int
     case Closed = 0;
     case Open = 1;
     case Draft = 2;
+}
+
+// Blog.php
+class Blog
+{
+    public function __construct(
+        public StatusEnum $status = StatusEnum::Open,
+    ) {
+    }
 }
 
 
