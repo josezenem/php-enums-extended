@@ -1,5 +1,6 @@
 # PHP 8.1 Enums Extended
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d785f3b1ca6f47d59cd1ad7c05bb1ec0)](https://app.codacy.com/gh/josezenem/php-enums-extended?utm_source=github.com&utm_medium=referral&utm_content=josezenem/php-enums-extended&utm_campaign=Badge_Grade_Settings)
 [![Latest Stable Version](http://poser.pugx.org/josezenem/php-enums-extended/v)](https://packagist.org/packages/josezenem/php-enums-extended)
 [![Tests](https://github.com/josezenem/php-enums-extended/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/josezenem/php-enums-extended/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/josezenem/php-enums-extended.svg?style=flat-square)](https://packagist.org/packages/josezenem/php-enums-extended)
