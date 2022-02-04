@@ -3,7 +3,8 @@
     "description": "Extended PHP 8.1 Enums",
     "keywords": [
         "josezenem",
-        "php-enums-extended"
+        "php-enums-extended",
+        "enums"
     ],
     "homepage": "https://github.com/josezenem/php-enums-extended",
     "license": "MIT",
