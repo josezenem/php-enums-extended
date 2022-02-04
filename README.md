@@ -16,7 +16,6 @@ composer require josezenem/php-enums-extended
 ```
 
 ## Usage
-
 * **->equals(...$params)** Pass one or multiple parameters, will return true if one matches.
 * **->doesNotEqual(...$params)** Inverse of ->equals()
 
@@ -85,7 +84,6 @@ $options = StatusEnum::toOptionsInversedArray();
 //    'Open' => 1,
 //    'Closed' => 2,
 //];
-
 ```
 
 ## Testing
