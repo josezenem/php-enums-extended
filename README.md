@@ -2,9 +2,9 @@
 
 [![Latest Stable Version](http://poser.pugx.org/josezenem/php-enums-extended/v)](https://packagist.org/packages/josezenem/php-enums-extended)
 [![Tests](https://github.com/josezenem/php-enums-extended/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/josezenem/php-enums-extended/actions/workflows/run-tests.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0bd2399747f045e78039e72d51a87355)](https://www.codacy.com/gh/josezenem/php-enums-extended/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=josezenem/php-enums-extended&amp;utm_campaign=Badge_Grade)
 [![Total Downloads](https://img.shields.io/packagist/dt/josezenem/php-enums-extended.svg?style=flat-square)](https://packagist.org/packages/josezenem/php-enums-extended)
 [![PHP Version Require](http://poser.pugx.org/josezenem/php-enums-extended/require/php)](https://packagist.org/packages/josezenem/php-enums-extended)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0bd2399747f045e78039e72d51a87355)](https://www.codacy.com/gh/josezenem/php-enums-extended/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=josezenem/php-enums-extended&amp;utm_campaign=Badge_Grade)
 
 PHP 8.1 Enums Extended, gives you the ability to use additional methods to work with PHP 8.1 Enums.
 
