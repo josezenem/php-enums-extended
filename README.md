@@ -118,9 +118,9 @@ $options = StatusEnum::toOptionsInversedArray();
 <a name="available-static-methods"></a>
 ## [`Available Static Methods`](#available-static-methods)
 - [`toOptionsArray()`](#static-method-to-options-array)
-- [`toOptionsInverseArray()`](#static-method-to-options-inversed-array)
-- [`toNamesArray()`](#static-method-names-array)
-- [`toValuesArray()`](#static-method-values-array)
+- [`toOptionsInverseArray()`](#static-method-to-options-inverse-array)
+- [`toNamesArray()`](#static-method-to-names-array)
+- [`toValuesArray()`](#static-method-to-values-array)
 - [`call**()`](#static-method-call)
 
 <a name="method-equals"></a>
