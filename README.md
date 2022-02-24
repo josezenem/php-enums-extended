@@ -8,6 +8,27 @@
 
 PHP 8.1 Enums Extended, gives you the ability to use additional methods to work with PHP 8.1 Enums.
 
+```php
+enum StatusEnum:int
+{
+    case Closed = 0;
+    case Open = 1;
+    case PENDING_APPROVAL = 2;
+}
+
+// Given a new Blog() that uses the enum trait, you can do things like:
+$blog->status->isOpen() // Will return boolean
+$blog->status->equals(StatusEnum::Open, StatusEnum::Closed)
+
+// Normalization happens in the background allowing these scenarios 
+$blog->status->isPendingApproval();
+$blog->status->isPENDING_APPROVAL();
+
+StatusEnum::Open() // Will return ->value, vs doing StatusEnum::Open->value
+StatusEum::PendingApproval()
+StatusEum::PENDING_APPROVAL()
+```
+
 ## Installation
 
 You can install the package via composer:
@@ -62,7 +83,9 @@ $blog->status->equals(StatusEnum::Closed, StatusEnum::Open); // Pass any number 
 $blog->status->doesNotEqual(StatusEnum::Closed); // will return true if it does not match
 $blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft)  // Pass any number of params, will return true if it does not match any of the parameters
 
-
+// ->is** magic method
+// the magic method takes camelCase allowing you to do boolean check against any field.
+$blog->status->isOpen() // will return true or false
 
 // ::toOptionsArray()
 $options = StatusEnum::toOptionsArray();
@@ -74,8 +97,6 @@ $options = StatusEnum::toOptionsArray();
 //    2 => 'Closed',
 //];
 
-
-
 // ::toOptionsInverseArray()
 $options = StatusEnum::toOptionsInversedArray();
 
@@ -85,6 +106,123 @@ $options = StatusEnum::toOptionsInversedArray();
 //    'Open' => 1,
 //    'Closed' => 2,
 //];
+```
+
+<a name="available-methods"></a>
+## [`Available Methods`](#available-methods)
+
+- [`equals()`](#method-equals)
+- [`doesNotEqual()`](#method-does-not-equal)
+- [`isCall**()`](#method-isCall)
+
+<a name="available-static-methods"></a>
+## [`Available Static Methods`](#available-static-methods)
+- [`toOptionsArray()`](#static-method-to-options-array)
+- [`toOptionsInverseArray()`](#static-method-to-options-inversed-array)
+- [`toNamesArray()`](#static-method-names-array)
+- [`toValuesArray()`](#static-method-values-array)
+- [`call**()`](#static-method-call)
+
+<a name="method-equals"></a>
+### `equals()`
+Pass one or multiple Enum cases, will return boolean if one matches.
+```php
+$blog->status->equals(StatusEnum::Closed, StatusEnum::Draft);
+```
+<a name="method-does-not-equal"></a>
+### `doesNotEqual()`
+Pass one or multiple Enum cases, will return boolean if it does not match.
+```php
+$blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft);
+```
+<a name="method-is"></a>
+### `isCall**()`
+Returns boolean if the current value matches the desired case.  Methods with underscores can be accessed via camel case, as well as their regular name.
+```php
+$blog->status->isDraft();
+
+// Given StatusEnum::OPEN_ISSUE = 4;
+// the following is acceptable.
+$blog->status->isOpenIssue();
+$blog->status->isOPEN_ISSUE();
+```
+<a name="static-method-to-options-array"></a>
+### `toOptionsArray()`
+Will return an array of $val => $key.
+```php
+$options = self::toOptionsArray()
+
+// returns
+$options = [
+    'open' => 'Open',
+    'closed' => 'Closed',
+    'draft' => 'Draft',
+]
+```
+<a name="static-method-to-options-inverse-array"></a>
+### `toOptionsInverseArray()`
+Will return an array of $key => $val.
+```php
+$options = self::toOptionsInverseArray()
+
+// returns
+$options = [
+    'Open' => 'open',
+    'Closed' => 'closed',
+    'Draft' => 'draft',
+]
+```
+<a name="static-method-to-names-array"></a>
+### `toNamesArray()`
+Will return an array of only names
+```php
+$options = self::toNamesArray()
+
+// returns
+$options = [
+    'Open' => 'Open',
+    'Closed' => 'Closed',
+    'Draft' => 'Draft',
+]
+```
+<a name="static-method-to-values-array"></a>
+### `toValuesArray()`
+Will return an array of only values
+```php
+$options = self::toValuesArray()
+
+// returns
+$options = [
+    'open' => 'open',
+    'closed' => 'closed',
+    'draft' => 'draft',
+]
+```
+
+<a name="static-method-call"></a>
+### `call**()`
+Will allow you to grab the value of a field by calling it statically.
+```php
+// Consider the following scenario, to get the value you would do:
+// StatusEnum::Open->value
+enum StatusEnum:int
+{
+    case Closed = 0;
+    case Open = 1;
+    case Draft = 2;
+}
+
+// You can instead get value directy by calling it statically
+// Case Insensitive
+StatusEnum::OPEN()
+StatusEnum::Open()
+```
+
+### Exception Handler
+When using the magic methods, if the method calls do not exist, the system will throw
+
+```
+Josezenem\PhpEnumsExtended\Exceptions\EnumsExtendedException
 ```
 
 ## Testing
@@ -110,7 +248,6 @@ Please review [our security policy](../../security/policy) on how to report secu
 - [Jose Jimenez](https://github.com/josezenem)
 - [All Contributors](../../contributors)
 - Special Thanks to [Shocm](https://twitter.com/shocm) for pushing me to make this, and answering my late replies.
-- Special thanks to [Spatie](https://spatie.be) & [Brendt](https://stitcher.io) for their packages and knowledge.
 
 ## License
 

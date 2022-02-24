@@ -2,6 +2,8 @@
 
 namespace Josezenem\PhpEnumsExtended\Traits;
 
+use Josezenem\PhpEnumsExtended\Exceptions\EnumsExtendedException;
+
 trait PhpEnumsExtendedTrait
 {
     public function equals(...$params): bool
@@ -24,16 +26,78 @@ trait PhpEnumsExtendedTrait
 
     public static function toOptionsArray(): array
     {
-        array_map(static function ($case) use (&$data) {
+        foreach (self::cases() as $case) {
             $value = $case->value ?? $case->name;
             $data[$value] = $case->name;
+        }
+
+        return $data;
+    }
+
+    public static function toNamesArray()
+    {
+        foreach (self::cases() as $case) {
+            $data[$case->name] = $case->name;
+        }
+        return $data;
+    }
+
+    public static function toValuesArray()
+    {
+        foreach (self::cases() as $case) {
+            $value = $case->value ?? $case->name;
+            $data[$value] = $value;
+        }
+        return $data;
+    }
+
+    public static function toOptionsInverseArray(): array
+    {
+        return array_flip(self::toOptionsArray());
+    }
+
+    protected static function normalizedMethods($prefix = null)
+    {
+        array_map(static function ($case) use (&$data, $prefix) {
+            $value = $case->value ?? $case->name;
+            $normalized_name = self::methodNameNormalizer($case->name, $prefix);
+            $data[$normalized_name] = $value;
+            if ($prefix === null && str_contains($case->name, '_')) {
+                $data[strtolower($case->name)] = $value;
+            }
         }, self::cases());
 
         return $data;
     }
 
-    public static function toOptionsInversedArray(): array
+    protected static function methodNameNormalizer($name, $prefix): string
     {
-        return array_flip(self::toOptionsArray());
+        return $prefix . str_replace('_', '', strtolower($name));
+    }
+
+    /**
+     * @throws EnumsExtendedException
+     */
+    public function __call($name, $arguments)
+    {
+        $self_value = $this->value ?? $this->name;
+
+        if (! isset(self::normalizedMethods('is')[strtolower($name)])) {
+            throw new EnumsExtendedException('Enum method ' . $name . ' not found: ');
+        }
+
+        return ($self_value === self::normalizedMethods('is')[strtolower($name)]);
+    }
+
+    /**
+     * @throws EnumsExtendedException
+     */
+    public static function __callStatic(string $name, array $arguments)
+    {
+        if (! isset(self::normalizedMethods()[strtolower($name)])) {
+            throw new EnumsExtendedException('Enum static method ' . $name . ' not found: ');
+        }
+
+        return self::normalizedMethods()[strtolower($name)];
     }
 }

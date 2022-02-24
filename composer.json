@@ -1,6 +1,6 @@
 {
     "name": "josezenem/php-enums-extended",
-    "description": "Extended PHP 8.1 Enums",
+    "description": "PHP 8.1 Enums Extended adds additional functionality when working with PHP 8.1+ Enums.",
     "keywords": [
         "josezenem",
         "php-enums-extended",
