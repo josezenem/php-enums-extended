@@ -39,6 +39,7 @@ trait PhpEnumsExtendedTrait
         foreach (self::cases() as $case) {
             $data[$case->name] = $case->name;
         }
+
         return $data;
     }
 
@@ -48,6 +49,7 @@ trait PhpEnumsExtendedTrait
             $value = $case->value ?? $case->name;
             $data[$value] = $value;
         }
+
         return $data;
     }
 

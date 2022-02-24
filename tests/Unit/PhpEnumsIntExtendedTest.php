@@ -40,4 +40,3 @@ it('is open by calling static magic method', function () {
 it('throws an exception when method does not exist', function () {
     $this->blog->intStatus::DELETED_DRAFT();
 })->throws(EnumsExtendedException::class);
-
