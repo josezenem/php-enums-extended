@@ -42,8 +42,8 @@ composer require josezenem/php-enums-extended
 * **->doesNotEqual(...$params)** Inverse of ->equals()
 
 
-* **::toOptionsArray()** Will return an array of a $key => $val pair.
-* **::toOptionsInverseArray()** Will return an array of a $val => $key pair.
+* **::options()** Will return an array of a $key => $val pair.
+* **::optionsFlipped()** Will return an array of a $val => $key pair.
 
 ```php
 
@@ -87,8 +87,8 @@ $blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft)  // Pass any 
 // the magic method takes camelCase allowing you to do boolean check against any field.
 $blog->status->isOpen() // will return true or false
 
-// ::toOptionsArray()
-$options = StatusEnum::toOptionsArray();
+// ::options()
+$options = StatusEnum::options();
 
 // will output
 //$options = [
@@ -97,8 +97,8 @@ $options = StatusEnum::toOptionsArray();
 //    2 => 'Closed',
 //];
 
-// ::toOptionsInverseArray()
-$options = StatusEnum::toOptionsInversedArray();
+// ::optionsFlipped()
+$options = StatusEnum::optionsFlipped();
 
 // will output
 //$options = [
@@ -117,10 +117,10 @@ $options = StatusEnum::toOptionsInversedArray();
 
 <a name="available-static-methods"></a>
 ## [`Available Static Methods`](#available-static-methods)
-- [`toOptionsArray()`](#static-method-to-options-array)
-- [`toOptionsInverseArray()`](#static-method-to-options-inverse-array)
-- [`toNamesArray()`](#static-method-to-names-array)
-- [`toValuesArray()`](#static-method-to-values-array)
+- [`options()`](#static-method-to-options-array)
+- [`optionsFlipped()`](#static-method-to-options-flipped-array)
+- [`names()`](#static-method-to-names-array)
+- [`values()`](#static-method-to-values-array)
 - [`call**()`](#static-method-call)
 
 <a name="method-equals"></a>
@@ -147,10 +147,10 @@ $blog->status->isOpenIssue();
 $blog->status->isOPEN_ISSUE();
 ```
 <a name="static-method-to-options-array"></a>
-### `toOptionsArray()`
+### `options()`
 Will return an array of $val => $key.
 ```php
-$options = self::toOptionsArray()
+$options = self::options()
 
 // returns
 $options = [
@@ -159,11 +159,11 @@ $options = [
     'draft' => 'Draft',
 ]
 ```
-<a name="static-method-to-options-inverse-array"></a>
-### `toOptionsInverseArray()`
+<a name="static-method-to-options-flipped-array"></a>
+### `optionsFlipped()`
 Will return an array of $key => $val.
 ```php
-$options = self::toOptionsInverseArray()
+$options = self::optionsFlipped()
 
 // returns
 $options = [
@@ -173,10 +173,10 @@ $options = [
 ]
 ```
 <a name="static-method-to-names-array"></a>
-### `toNamesArray()`
+### `names()`
 Will return an array of only names
 ```php
-$options = self::toNamesArray()
+$options = self::names()
 
 // returns
 $options = [
@@ -186,10 +186,10 @@ $options = [
 ]
 ```
 <a name="static-method-to-values-array"></a>
-### `toValuesArray()`
+### `values()`
 Will return an array of only values
 ```php
-$options = self::toValuesArray()
+$options = self::values()
 
 // returns
 $options = [

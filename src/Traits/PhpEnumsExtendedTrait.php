@@ -24,7 +24,7 @@ trait PhpEnumsExtendedTrait
         return ! $this->equals(...$params);
     }
 
-    public static function toOptionsArray(): array
+    public static function options(): array
     {
         foreach (self::cases() as $case) {
             $value = $case->value ?? $case->name;
@@ -34,7 +34,7 @@ trait PhpEnumsExtendedTrait
         return $data;
     }
 
-    public static function toNamesArray()
+    public static function names()
     {
         foreach (self::cases() as $case) {
             $data[$case->name] = $case->name;
@@ -43,7 +43,7 @@ trait PhpEnumsExtendedTrait
         return $data;
     }
 
-    public static function toValuesArray()
+    public static function values()
     {
         foreach (self::cases() as $case) {
             $value = $case->value ?? $case->name;
@@ -53,9 +53,9 @@ trait PhpEnumsExtendedTrait
         return $data;
     }
 
-    public static function toOptionsInverseArray(): array
+    public static function optionsFlipped(): array
     {
-        return array_flip(self::toOptionsArray());
+        return array_flip(self::options());
     }
 
     protected static function normalizedMethods($prefix = null)

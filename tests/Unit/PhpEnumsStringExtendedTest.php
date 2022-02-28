@@ -4,7 +4,7 @@ use Josezenem\PhpEnumsExtended\Exceptions\EnumsExtendedException;
 use Josezenem\PhpEnumsExtended\Tests\Dummy\StatusStringEnumTest;
 
 it('converts to options array', function () {
-    $status_as_array = StatusStringEnumTest::toOptionsArray();
+    $status_as_array = StatusStringEnumTest::options();
 
 
     expect($status_as_array)->toMatchArray([
@@ -13,8 +13,8 @@ it('converts to options array', function () {
     ]);
 });
 
-it('converts to options array inverse', function () {
-    $status_as_array = StatusStringEnumTest::toOptionsInverseArray();
+it('converts to options array flipped', function () {
+    $status_as_array = StatusStringEnumTest::optionsFlipped();
 
     expect($status_as_array)->toMatchArray([
         'Closed' => 'closed',
