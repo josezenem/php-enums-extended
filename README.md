@@ -38,75 +38,6 @@ composer require josezenem/php-enums-extended
 ```
 
 ## Usage
-* **->equals(...$params)** Pass one or multiple parameters, will return true if one matches.
-* **->doesNotEqual(...$params)** Inverse of ->equals()
-
-
-* **::options()** Will return an array of a $key => $val pair.
-* **::optionsFlipped()** Will return an array of a $val => $key pair.
-
-```php
-
-// StatusEnum.php
-// StatusEnum:int is used for the example, but supports :string and default of just StatusEnum
-use Josezenem\PhpEnumsExtended\Traits\PhpEnumsExtendedTrait;
-
-enum StatusEnum:int
-{
-    use PhpEnumsExtendedTrait;
-
-    case Closed = 0;
-    case Open = 1;
-    case Draft = 2;
-}
-
-// Blog.php
-class Blog
-{
-    public function __construct(
-        public StatusEnum $status = StatusEnum::Open,
-    ) {
-    }
-}
-
-
-
-// Usage
-$blog = new Blog();
-
-
-// ->equals()
-$blog->status->equals(StatusEnum::Open); // will return true if it matches
-$blog->status->equals(StatusEnum::Closed, StatusEnum::Open); // Pass any number of params, will return true if it matches any of the parameters
-
-// ->doesNotEqual()
-$blog->status->doesNotEqual(StatusEnum::Closed); // will return true if it does not match
-$blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft)  // Pass any number of params, will return true if it does not match any of the parameters
-
-// ->is** magic method
-// the magic method takes camelCase allowing you to do boolean check against any field.
-$blog->status->isOpen() // will return true or false
-
-// ::options()
-$options = StatusEnum::options();
-
-// will output
-//$options = [
-//    0 => 'Closed',
-//    1 => 'Open',
-//    2 => 'Closed',
-//];
-
-// ::optionsFlipped()
-$options = StatusEnum::optionsFlipped();
-
-// will output
-//$options = [
-//    'Closed' => 0,
-//    'Open' => 1,
-//    'Closed' => 2,
-//];
-```
 
 <a name="available-methods"></a>
 ## [`Available Methods`](#available-methods)
@@ -223,6 +154,68 @@ When using the magic methods, if the method calls do not exist, the system will 
 
 ```
 Josezenem\PhpEnumsExtended\Exceptions\EnumsExtendedException
+```
+
+```php
+// StatusEnum.php
+// StatusEnum:int is used for the example, but supports :string and default of just StatusEnum
+use Josezenem\PhpEnumsExtended\Traits\PhpEnumsExtendedTrait;
+
+enum StatusEnum:int
+{
+    use PhpEnumsExtendedTrait;
+
+    case Closed = 0;
+    case Open = 1;
+    case Draft = 2;
+}
+
+// Blog.php
+class Blog
+{
+    public function __construct(
+        public StatusEnum $status = StatusEnum::Open,
+    ) {
+    }
+}
+
+
+
+// Usage
+$blog = new Blog();
+
+
+// ->equals()
+$blog->status->equals(StatusEnum::Open); // will return true if it matches
+$blog->status->equals(StatusEnum::Closed, StatusEnum::Open); // Pass any number of params, will return true if it matches any of the parameters
+
+// ->doesNotEqual()
+$blog->status->doesNotEqual(StatusEnum::Closed); // will return true if it does not match
+$blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft)  // Pass any number of params, will return true if it does not match any of the parameters
+
+// ->is** magic method
+// the magic method takes camelCase allowing you to do boolean check against any field.
+$blog->status->isOpen() // will return true or false
+
+// ::options()
+$options = StatusEnum::options();
+
+// will output
+//$options = [
+//    0 => 'Closed',
+//    1 => 'Open',
+//    2 => 'Closed',
+//];
+
+// ::optionsFlipped()
+$options = StatusEnum::optionsFlipped();
+
+// will output
+//$options = [
+//    'Closed' => 0,
+//    'Open' => 1,
+//    'Closed' => 2,
+//];
 ```
 
 ## Testing
