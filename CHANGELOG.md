@@ -2,6 +2,13 @@
 
 All notable changes to `php-enums-extended` will be documented in this file.
 
+## 3.0.0 - 2022-03-05
+
+- Cleaned up all the names for better consistency within Enums.
+- renamed toOptionsArray to options
+- renamed toValuesArray to values
+- renamed toNamesArray to names
+
 ## 2.0.0 - 2022-02-25
 
 - Updated Pest Suite
