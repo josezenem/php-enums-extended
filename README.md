@@ -66,6 +66,12 @@ Pass one or multiple Enum cases, will return boolean if it does not match.
 ```php
 $blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft);
 ```
+<a name="exist"></a>
+### `exist()`
+Pass variable and confirm if the value is valid for the Enum 
+```php
+App\MyEnums\Type::exist('closed');
+```
 <a name="method-is"></a>
 ### `isCall**()`
 Returns boolean if the current value matches the desired case.  Methods with underscores can be accessed via camel case, as well as their regular name.
