@@ -71,6 +71,10 @@ $blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft);
 Pass variable and confirm if the value is valid for the Enum 
 ```php
 App\MyEnums\Type::exist('closed');
+// Returns true
+
+App\MyEnums\Type::exist('not a valid value for the enum');
+// Returns false
 ```
 <a name="method-is"></a>
 ### `isCall**()`
