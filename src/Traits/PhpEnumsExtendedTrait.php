@@ -34,7 +34,7 @@ trait PhpEnumsExtendedTrait
         return $data;
     }
 
-    public static function exist($value): bool
+    public static function exists($value): bool
     {
         return self::tryFrom($value) ? true : false;
     }

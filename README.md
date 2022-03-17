@@ -66,14 +66,14 @@ Pass one or multiple Enum cases, will return boolean if it does not match.
 ```php
 $blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft);
 ```
-<a name="exist"></a>
-### `exist()`
+<a name="exists"></a>
+### `exists()`
 Pass variable and confirm if the value is valid for the Enum 
 ```php
-App\MyEnums\Type::exist('closed');
+App\MyEnums\Type::exists('closed');
 // Returns true
 
-App\MyEnums\Type::exist('not a valid value for the enum');
+App\MyEnums\Type::exists('not a valid value for the enum');
 // Returns false
 ```
 <a name="method-is"></a>
