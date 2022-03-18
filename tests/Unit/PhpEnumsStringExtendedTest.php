@@ -41,3 +41,19 @@ it('is open by calling static magic method', function () {
 it('throws an exception when method does not exist', function () {
     $this->blog->stringStatus::DELETED_DRAFT();
 })->throws(EnumsExtendedException::class);
+
+it('is a valid value for the Enum', function () {
+    expect(StatusStringEnumTest::hasValue('open'))->toBeTrue();
+});
+
+it('is not a valid value for the Enum', function () {
+    expect(StatusStringEnumTest::hasValue('not open'))->toBeFalse();
+});
+
+it('is a valid name for the Enum', function () {
+    expect(StatusStringEnumTest::hasName('Open'))->toBeTrue();
+});
+
+it('is not a name name for the Enum', function () {
+    expect(StatusStringEnumTest::hasName('open'))->toBeFalse();
+});

@@ -34,6 +34,16 @@ trait PhpEnumsExtendedTrait
         return $data;
     }
 
+    public static function hasValue($value): bool
+    {
+        return self::tryFrom($value) ? true : false;
+    }
+
+    public static function hasName($value, bool $strict = false): bool
+    {
+        return in_array($value, self::names(), $strict);
+    }
+
     public static function names()
     {
         foreach (self::cases() as $case) {
