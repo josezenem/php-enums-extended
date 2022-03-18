@@ -42,9 +42,9 @@ it('throws an exception when method does not exist', function () {
 })->throws(EnumsExtendedException::class);
 
 it('is a valid value for the Enum', function () {
-    expect(StatusIntEnumTest::exists(1))->toBeTrue();
+    expect(StatusIntEnumTest::hasValue(1))->toBeTrue();
 });
 
 it('is not a valid value for the Enum', function () {
-    expect(StatusIntEnumTest::exists(11))->toBeFalse();
+    expect(StatusIntEnumTest::hasValue(11))->toBeFalse();
 });
