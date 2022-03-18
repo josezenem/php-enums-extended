@@ -2,6 +2,10 @@
 
 All notable changes to `php-enums-extended` will be documented in this file.
 
+## 3.1.0 - 2022-03-18
+
+- Adds new hasValue() and hasName() methods, thanks @ericvanjohnson
+
 ## 3.0.0 - 2022-03-05
 
 - Cleaned up all the names for better consistency within Enums.
