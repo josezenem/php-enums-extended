@@ -25,8 +25,8 @@ $blog->status->isPendingApproval();
 $blog->status->isPENDING_APPROVAL();
 
 StatusEnum::Open() // Will return ->value, vs doing StatusEnum::Open->value
-StatusEum::PendingApproval()
-StatusEum::PENDING_APPROVAL()
+StatusEnum::PendingApproval()
+StatusEnum::PENDING_APPROVAL()
 ```
 
 ## Installation
@@ -44,14 +44,16 @@ composer require josezenem/php-enums-extended
 
 - [`equals()`](#method-equals)
 - [`doesNotEqual()`](#method-does-not-equal)
-- [`isCall**()`](#method-isCall)
+- [`isCall**()`](#method-is-call)
 
 <a name="available-static-methods"></a>
 ## [`Available Static Methods`](#available-static-methods)
 - [`options()`](#static-method-to-options-array)
 - [`optionsFlipped()`](#static-method-to-options-flipped-array)
 - [`names()`](#static-method-to-names-array)
+- [`hasName()`](#static-method-has-name)
 - [`values()`](#static-method-to-values-array)
+- [`hasValue()`](#static-method-has-value)
 - [`call**()`](#static-method-call)
 
 <a name="method-equals"></a>
@@ -66,27 +68,7 @@ Pass one or multiple Enum cases, will return boolean if it does not match.
 ```php
 $blog->status->doesNotEqual(StatusEnum::Closed, StatusEnum::Draft);
 ```
-<a name="hasValue"></a>
-### `hasValue()`
-Pass variable and confirm if the value is valid for the Enum 
-```php
-App\MyEnums\Type::hasValue('closed');
-// Returns true
-
-App\MyEnums\Type::hasValue('not a valid value for the enum');
-// Returns false
-```
-<a name="hasName"></a>
-### `hasName()`
-Pass variable and confirm if the name is valid for the Enum 
-```php
-App\MyEnums\Type::hasName('Closed');
-// Returns true
-
-App\MyEnums\Type::hasName('close');
-// Returns false
-```
-<a name="method-is"></a>
+<a name="method-is-call"></a>
 ### `isCall**()`
 Returns boolean if the current value matches the desired case.  Methods with underscores can be accessed via camel case, as well as their regular name.
 ```php
@@ -136,6 +118,16 @@ $options = [
     'Draft' => 'Draft',
 ]
 ```
+<a name="static-method-has-name"></a>
+### `hasName()`
+Pass variable and confirm if the name is valid for the Enum
+```php
+App\MyEnums\Type::hasName('Closed');
+// Returns true
+
+App\MyEnums\Type::hasName('close');
+// Returns false
+```
 <a name="static-method-to-values-array"></a>
 ### `values()`
 Will return an array of only values
@@ -149,7 +141,16 @@ $options = [
     'draft' => 'draft',
 ]
 ```
+<a name="static-method-has-value"></a>
+### `hasValue()`
+Pass variable and confirm if the value is valid for the Enum
+```php
+App\MyEnums\Type::hasValue('closed');
+// Returns true
 
+App\MyEnums\Type::hasValue('not a valid value for the enum');
+// Returns false
+```
 <a name="static-method-call"></a>
 ### `call**()`
 Will allow you to grab the value of a field by calling it statically.
