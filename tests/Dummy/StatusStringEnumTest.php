@@ -4,7 +4,7 @@ namespace Josezenem\PhpEnumsExtended\Tests\Dummy;
 
 use Josezenem\PhpEnumsExtended\Traits\PhpEnumsExtendedTrait;
 
-enum StatusStringEnumTest:string
+enum StatusStringEnumTest: string
 {
     use PhpEnumsExtendedTrait;
 
